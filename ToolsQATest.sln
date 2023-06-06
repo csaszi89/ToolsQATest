@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToolsQA.UITests", "ToolsQA.UITests\ToolsQA.UITests.csproj", "{DEDFAD11-BEC6-4C79-934C-0535FDE59E40}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolsQA.Tests", "ToolsQA.Tests\ToolsQA.Tests.csproj", "{FD248EA5-21AE-4312-90E1-46D7676D83A1}"
 EndProject
 Global
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DEDFAD11-BEC6-4C79-934C-0535FDE59E40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DEDFAD11-BEC6-4C79-934C-0535FDE59E40}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DEDFAD11-BEC6-4C79-934C-0535FDE59E40}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DEDFAD11-BEC6-4C79-934C-0535FDE59E40}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FD248EA5-21AE-4312-90E1-46D7676D83A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FD248EA5-21AE-4312-90E1-46D7676D83A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD248EA5-21AE-4312-90E1-46D7676D83A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
