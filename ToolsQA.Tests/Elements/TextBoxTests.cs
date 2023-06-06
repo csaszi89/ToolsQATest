@@ -1,6 +1,6 @@
-﻿using OpenQA.Selenium;
-using ToolsQA.Tests.Common;
+﻿using ToolsQA.Tests.Common;
 using ToolsQA.Tests.Definitions;
+using ToolsQA.Tests.Pages;
 
 namespace ToolsQA.Tests.Elements
 {
@@ -19,14 +19,13 @@ namespace ToolsQA.Tests.Elements
         [Test]
         [TestCase("John Smith")]
         [TestCase("Jane Smith")]
+        [TestCase("This is a very long full name just like people have in brasil")]
         public void InputFullName(string value)
         {
-            var input = Browser.FindElement(By.Id("userName"));
-            input.SendKeys(value);
-            var submit = Browser.FindElement(By.Id("submit"));
-            submit.Click();
-            var name = Browser.FindElement(By.Id("name"));
-            Assert.IsTrue(name.Text.Contains(value));
+            var textBoxPage = new TextBoxPage(Browser);
+            textBoxPage.InputFullName(value);
+            textBoxPage.ClickSubmitButton();
+            Assert.IsTrue(textBoxPage.NameP.Displayed);
         }
     }
 }
