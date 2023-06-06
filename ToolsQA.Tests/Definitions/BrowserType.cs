@@ -1,4 +1,4 @@
-﻿namespace ToolsQA.UITests.Definitions
+﻿namespace ToolsQA.Tests.Definitions
 {
     public enum BrowserType
     {

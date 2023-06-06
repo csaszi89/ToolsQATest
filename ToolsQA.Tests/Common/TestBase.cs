@@ -2,9 +2,9 @@
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Remote;
-using ToolsQA.UITests.Definitions;
+using ToolsQA.Tests.Definitions;
 
-namespace ToolsQA.UITests.Common
+namespace ToolsQA.Tests.Common
 {
     [TestFixture(BrowserType.Chrome, "latest")]
     [TestFixture(BrowserType.MicrosoftEdge, "latest")]

@@ -1,8 +1,8 @@
 ﻿using OpenQA.Selenium;
-using ToolsQA.UITests.Common;
-using ToolsQA.UITests.Definitions;
+using ToolsQA.Tests.Common;
+using ToolsQA.Tests.Definitions;
 
-namespace ToolsQA.UITests.Elements
+namespace ToolsQA.Tests.Elements
 {
     public class TextBoxTests : TestBase
     {
