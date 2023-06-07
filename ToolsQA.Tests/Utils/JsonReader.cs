@@ -7,8 +7,9 @@ namespace ToolsQA.Tests.Utils
     {
         internal static BrowserInfo[] GetBrowserInfo()
         {
-            var workingDir = Environment.CurrentDirectory;
-            using StreamReader sr = new(Path.Combine(workingDir, "browsers.json"));
+            var binPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+            binPath = binPath?[6..];
+            using StreamReader sr = new(Path.Combine(binPath!, "browsers.json"));
             string json = sr.ReadToEnd();
             var browsers = JsonConvert.DeserializeObject<List<BrowserInfo>>(json);
             return browsers == null ? throw new InvalidOperationException("Browsers not specified") : browsers.ToArray();
