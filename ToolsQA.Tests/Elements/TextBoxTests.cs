@@ -60,5 +60,19 @@ namespace ToolsQA.Tests.Elements
             _textBoxPage.ClickSubmitButton();
             Assert.That(_textBoxPage.EmailP.Displayed);
         }
+
+        [Test]
+        [TestCase("John Smith", "johnsmith@email.com", "1234 MyCity, MyStreet 1", "4321 AnotherCity, AnotherStreet 2")]
+        public void FillForm(string fullName, string email, string currentAddress, string permanentAddress)
+        {
+            _textBoxPage.FillForm(fullName, email, currentAddress, permanentAddress);
+            Assert.Multiple(() =>
+            {
+                Assert.That(_textBoxPage.NameP.Displayed);
+                Assert.That(_textBoxPage.EmailP.Displayed);
+                Assert.That(_textBoxPage.CurrentAddressP.Displayed);
+                Assert.That(_textBoxPage.PermanentAddressP.Displayed);
+            });
+        }
     }
 }
