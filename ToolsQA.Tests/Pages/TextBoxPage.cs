@@ -9,6 +9,8 @@ namespace ToolsQA.Tests.Pages
         {
         }
 
+        protected override string Url => $"{BaseUrl}/text-box";
+
         public IWebElement FullNameInput => _driver.FindElement(By.Id("userName"));
 
         public IWebElement EmailInput => _driver.FindElement(By.Id("userEmail"));

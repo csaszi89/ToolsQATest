@@ -50,7 +50,7 @@ namespace ToolsQA.Tests.Common
                     throw new NotSupportedException($"Browser {browserType} not supported");
             }
             options.BrowserVersion = _browserVersion;
-            return new RemoteWebDriver(new Uri("http://localhost:4444/"), options);
+            return new RemoteWebDriver(new Uri(TestEnvironment.RemoteWebDriverUrl), options);
         }
     }
 }
