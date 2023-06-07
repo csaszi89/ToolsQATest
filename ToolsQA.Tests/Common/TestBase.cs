@@ -20,7 +20,8 @@ namespace ToolsQA.Tests.Common
         [SetUp]
         public void SetUp()
         {
-            Driver = StartBrowser();
+            Driver = GetDriver();
+            Console.WriteLine($"Browser name: {_browser.Name} - version: {_browser.Version}");
         }
 
         [TearDown]
@@ -45,7 +46,7 @@ namespace ToolsQA.Tests.Common
             return options;
         }
 
-        private IWebDriver StartBrowser()
+        private IWebDriver GetDriver()
         {
             return new RemoteWebDriver(new Uri(TestEnvironment.RemoteWebDriverUrl), GetOptions());
         }
