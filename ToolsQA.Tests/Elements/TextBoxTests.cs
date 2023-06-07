@@ -10,7 +10,7 @@ namespace ToolsQA.Tests.Elements
     {
         private TextBoxPage _textBoxPage;
 
-        public TextBoxTests(Browser browser) : base(browser)
+        public TextBoxTests(BrowserInfo browser) : base(browser)
         {
         }
 

@@ -7,21 +7,22 @@ using ToolsQA.Tests.Utils;
 
 namespace ToolsQA.Tests.Common
 {
-    [TestFixtureSource(typeof(JsonReader), nameof(JsonReader.GetBrowsers))]
+    [TestFixtureSource(nameof(FixtureArgs))]
     public class TestBase
     {
-        private readonly Browser _browser;
+        private static readonly BrowserInfo[] FixtureArgs = JsonReader.GetBrowserInfo();
+        private readonly BrowserInfo _browserInfo;
 
-        public TestBase(Browser browser)
+        public TestBase(BrowserInfo browserInfo)
         {
-            _browser = browser;
+            _browserInfo = browserInfo;
         }
 
         [SetUp]
         public void SetUp()
         {
             Driver = GetDriver();
-            Console.WriteLine($"Browser name: {_browser.Name} - version: {_browser.Version}");
+            Console.WriteLine($"Browser name: {_browserInfo.Name} - version: {_browserInfo.Version}");
         }
 
         [TearDown]
@@ -32,17 +33,15 @@ namespace ToolsQA.Tests.Common
 
         protected IWebDriver Driver { get; private set; }
 
-        private static Browser[] FixtureArgs() => JsonReader.GetBrowsers();
-
         private DriverOptions GetOptions()
         {
-            DriverOptions options = _browser.Name switch
+            DriverOptions options = _browserInfo.Name switch
             {
                 "Chrome" => new ChromeOptions(),
                 "MicrosoftEdge" => new EdgeOptions(),
-                _ => throw new NotSupportedException($"Browser {_browser.Name} not supported"),
+                _ => throw new NotSupportedException($"Browser {_browserInfo.Name} not supported"),
             };
-            options.BrowserVersion = _browser.Version;
+            options.BrowserVersion = _browserInfo.Version;
             return options;
         }
 

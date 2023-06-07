@@ -2,7 +2,7 @@
 
 namespace ToolsQA.Tests.Definitions
 {
-    public class Browser
+    public class BrowserInfo
     {
         [JsonProperty("browserName")]
         public string? Name { get; set; }

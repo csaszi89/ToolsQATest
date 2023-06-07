@@ -5,11 +5,11 @@ namespace ToolsQA.Tests.Utils
 {
     internal class JsonReader
     {
-        internal static Browser[] GetBrowsers()
+        internal static BrowserInfo[] GetBrowserInfo()
         {
             using StreamReader sr = new("browsers.json");
             string json = sr.ReadToEnd();
-            var browsers = JsonConvert.DeserializeObject<List<Browser>>(json);
+            var browsers = JsonConvert.DeserializeObject<List<BrowserInfo>>(json);
 
             if (browsers == null)
             {
