@@ -7,16 +7,11 @@ namespace ToolsQA.Tests.Utils
     {
         internal static BrowserInfo[] GetBrowserInfo()
         {
-            using StreamReader sr = new("browsers.json");
+            var workingDir = Environment.CurrentDirectory;
+            using StreamReader sr = new(Path.Combine(workingDir, "browsers.json"));
             string json = sr.ReadToEnd();
             var browsers = JsonConvert.DeserializeObject<List<BrowserInfo>>(json);
-
-            if (browsers == null)
-            {
-                throw new InvalidOperationException("Browsers not specified");
-            }
-
-            return browsers.ToArray();
+            return browsers == null ? throw new InvalidOperationException("Browsers not specified") : browsers.ToArray();
         }
     };
 }
