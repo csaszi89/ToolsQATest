@@ -1,7 +1,7 @@
 ﻿namespace ToolsQA.Tests.Definitions
 {
-    public class TestEnvironment
+    internal class TestEnvironment
     {
-        public static string RemoteWebDriverUrl = "http://localhost:4444/";
+        internal static readonly string RemoteWebDriverUrl = "http://localhost:4444/";
     }
 }

@@ -1,0 +1,18 @@
+[
+  {
+    "browserName": "Chrome",
+    "browserVersion": "dev"
+  },
+  {
+    "browserName": "Chrome",
+    "browserVersion": "latest"
+  },
+  {
+    "browserName": "MicrosoftEdge",
+    "browserVersion": "dev"
+  },
+  {
+    "browserName": "MicrosoftEdge",
+    "browserVersion": "latest"
+  }
+]

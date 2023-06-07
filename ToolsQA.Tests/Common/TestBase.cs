@@ -3,54 +3,51 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Remote;
 using ToolsQA.Tests.Definitions;
+using ToolsQA.Tests.Utils;
 
 namespace ToolsQA.Tests.Common
 {
-    [TestFixture(BrowserType.Chrome, "latest")]
-    [TestFixture(BrowserType.MicrosoftEdge, "latest")]
-    [TestFixture(BrowserType.Chrome, "dev")]
-    [TestFixture(BrowserType.MicrosoftEdge, "dev")]
+    [TestFixtureSource(typeof(JsonReader), nameof(JsonReader.GetBrowsers))]
     public class TestBase
     {
-        private readonly BrowserType _browserType;
-        private readonly string _browserVersion;
+        private readonly Browser _browser;
 
-        public TestBase(BrowserType browserType, string browserVersion)
+        public TestBase(Browser browser)
         {
-            _browserType = browserType;
-            _browserVersion = browserVersion;
+            _browser = browser;
         }
 
         [SetUp]
         public void SetUp()
         {
-            Browser = StartBrowser(_browserType);
+            Driver = StartBrowser();
         }
 
         [TearDown]
         public void TearDown()
         {
-            Browser.Dispose();
+            Driver.Dispose();
         }
 
-        protected IWebDriver Browser { get; private set; }
+        protected IWebDriver Driver { get; private set; }
 
-        private IWebDriver StartBrowser(BrowserType browserType)
+        private static Browser[] FixtureArgs() => JsonReader.GetBrowsers();
+
+        private DriverOptions GetOptions()
         {
-            DriverOptions options;
-            switch (browserType)
+            DriverOptions options = _browser.Name switch
             {
-                case BrowserType.Chrome:
-                    options = new ChromeOptions();
-                    break;
-                case BrowserType.MicrosoftEdge:
-                    options = new EdgeOptions();
-                    break;
-                default:
-                    throw new NotSupportedException($"Browser {browserType} not supported");
-            }
-            options.BrowserVersion = _browserVersion;
-            return new RemoteWebDriver(new Uri(TestEnvironment.RemoteWebDriverUrl), options);
+                "Chrome" => new ChromeOptions(),
+                "MicrosoftEdge" => new EdgeOptions(),
+                _ => throw new NotSupportedException($"Browser {_browser.Name} not supported"),
+            };
+            options.BrowserVersion = _browser.Version;
+            return options;
+        }
+
+        private IWebDriver StartBrowser()
+        {
+            return new RemoteWebDriver(new Uri(TestEnvironment.RemoteWebDriverUrl), GetOptions());
         }
     }
 }

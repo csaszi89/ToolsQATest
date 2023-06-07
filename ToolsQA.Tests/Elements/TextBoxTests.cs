@@ -10,14 +10,14 @@ namespace ToolsQA.Tests.Elements
     {
         private TextBoxPage _textBoxPage;
 
-        public TextBoxTests(BrowserType browserType, string browserVersion) : base(browserType, browserVersion)
+        public TextBoxTests(Browser browser) : base(browser)
         {
         }
 
         [SetUp]
         public void TextBoxTestsSetUp()
         {
-            _textBoxPage = new TextBoxPage(Browser);
+            _textBoxPage = new TextBoxPage(Driver);
             _textBoxPage.NavigateTo();
         }
 
