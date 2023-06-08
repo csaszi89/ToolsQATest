@@ -35,7 +35,7 @@ namespace ToolsQA.Tests.Pages
 
         public bool IsResultPresent(string text)
         {
-            return ResultDiv.TryFindElement(By.XPath($"span[text()='{text}']"), out _);
+            return ResultDiv.IsElementPresent(By.XPath($"span[text()='{text}']"));
         }
     }
 }
