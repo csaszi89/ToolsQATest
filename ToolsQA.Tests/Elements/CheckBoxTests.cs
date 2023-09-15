@@ -13,7 +13,7 @@ namespace ToolsQA.Tests.Elements
         }
 
         [SetUp]
-        public void TextBoxTestsSetUp()
+        public void CheckBoxTestsSetUp()
         {
             _checkBoxPage = new CheckBoxPage(Driver);
             _checkBoxPage.NavigateTo();
