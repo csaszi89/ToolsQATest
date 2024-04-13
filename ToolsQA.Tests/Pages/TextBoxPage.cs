@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using ToolsQA.Tests.Common;
+using ToolsQA.Tests.Extensions;
 
 namespace ToolsQA.Tests.Pages
 {
@@ -53,7 +54,7 @@ namespace ToolsQA.Tests.Pages
 
         public void ClickSubmitButton()
         {
-            SubmitButton.Click();
+            SubmitButton.ClickByJavaScript(_driver);
         }
 
         public void FillForm(string fullName, string email, string currentAddress, string permanentAddress)
