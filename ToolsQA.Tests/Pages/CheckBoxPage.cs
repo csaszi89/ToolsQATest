@@ -29,8 +29,7 @@ namespace ToolsQA.Tests.Pages
 
         public void ToggleHomeCheckBox()
         {
-            var executor = (IJavaScriptExecutor)_driver;
-            executor.ExecuteScript("arguments[0].click();", HomeCheckBox);
+            HomeCheckBox.ClickByJavaScript(_driver);
         }
 
         public bool IsResultPresent(string text)
