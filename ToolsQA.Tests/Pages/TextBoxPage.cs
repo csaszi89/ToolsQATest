@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using ToolsQA.Tests.Common;
+using ToolsQA.Tests.Definitions;
 using ToolsQA.Tests.Extensions;
 
 namespace ToolsQA.Tests.Pages
@@ -57,12 +58,12 @@ namespace ToolsQA.Tests.Pages
             SubmitButton.ClickByJavaScript(_driver);
         }
 
-        public void FillForm(string fullName, string email, string currentAddress, string permanentAddress)
+        public void FillForm(TextBoxPageFormData formData)
         {
-            InputFullName(fullName);
-            InputEmail(email);
-            InputCurrentAddress(currentAddress);
-            InputPermanentAddress(permanentAddress);
+            InputFullName(formData.FullName);
+            InputEmail(formData.Email);
+            InputCurrentAddress(formData.CurrentAddress);
+            InputPermanentAddress(formData.PermanentAddress);
             ClickSubmitButton();
         }
     }

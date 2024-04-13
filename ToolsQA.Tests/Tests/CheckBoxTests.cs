@@ -2,7 +2,7 @@
 using ToolsQA.Tests.Definitions;
 using ToolsQA.Tests.Pages;
 
-namespace ToolsQA.Tests.Elements
+namespace ToolsQA.Tests.Tests
 {
     public class CheckBoxTests : TestBase
     {

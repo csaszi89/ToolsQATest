@@ -3,8 +3,9 @@ using ToolsQA.Tests.Common;
 using ToolsQA.Tests.Definitions;
 using ToolsQA.Tests.Extensions;
 using ToolsQA.Tests.Pages;
+using ToolsQA.Tests.TestCaseSources;
 
-namespace ToolsQA.Tests.Elements
+namespace ToolsQA.Tests.Tests
 {
     public class TextBoxTests : TestBase
     {
@@ -22,18 +23,7 @@ namespace ToolsQA.Tests.Elements
         }
 
         [Test]
-        [TestCase("")]
-        public void InputFullName_Negative(string value)
-        {
-            _textBoxPage.InputFullName(value);
-            _textBoxPage.ClickSubmitButton();
-            Assert.That(_textBoxPage.OutputDiv.IsElementPresent(By.Id("name")), Is.False);
-        }
-
-        [Test]
-        [TestCase("John Smith")]
-        [TestCase("Jane Smith")]
-        [TestCase("This is a very long full name just like people have in brasil")]
+        [TestCaseSource(typeof(TextBoxTestCaseSource), nameof(TextBoxTestCaseSource.FullNamePositiveCases))]
         public void InputFullName_Positive(string value)
         {
             _textBoxPage.InputFullName(value);
@@ -42,18 +32,16 @@ namespace ToolsQA.Tests.Elements
         }
 
         [Test]
-        [TestCase("")]
-        [TestCase("invalidemail.com")]
-        [TestCase("invalid@emailcom")]
-        public void InputEmail_Negative(string value)
+        [TestCaseSource(typeof(TextBoxTestCaseSource), nameof(TextBoxTestCaseSource.FullNameNegativeCases))]
+        public void InputFullName_Negative(string value)
         {
-            _textBoxPage.InputEmail(value);
+            _textBoxPage.InputFullName(value);
             _textBoxPage.ClickSubmitButton();
-            Assert.That(_textBoxPage.OutputDiv.IsElementPresent(By.Id("email")), Is.False);
+            Assert.That(_textBoxPage.OutputDiv.IsElementPresent(By.Id("name")), Is.False);
         }
 
         [Test]
-        [TestCase("valid@email.com")]
+        [TestCaseSource(typeof(TextBoxTestCaseSource), nameof(TextBoxTestCaseSource.EmailPositiveCases))]
         public void InputEmail_Positive(string value)
         {
             _textBoxPage.InputEmail(value);
@@ -62,10 +50,19 @@ namespace ToolsQA.Tests.Elements
         }
 
         [Test]
-        [TestCase("John Smith", "johnsmith@email.com", "1234 MyCity, MyStreet 1", "4321 AnotherCity, AnotherStreet 2")]
-        public void FillForm(string fullName, string email, string currentAddress, string permanentAddress)
+        [TestCaseSource(typeof(TextBoxTestCaseSource), nameof(TextBoxTestCaseSource.EmailNegativeCases))]
+        public void InputEmail_Negative(string value)
         {
-            _textBoxPage.FillForm(fullName, email, currentAddress, permanentAddress);
+            _textBoxPage.InputEmail(value);
+            _textBoxPage.ClickSubmitButton();
+            Assert.That(_textBoxPage.OutputDiv.IsElementPresent(By.Id("email")), Is.False);
+        }
+
+        [Test]
+        [TestCaseSource(typeof(TextBoxTestCaseSource), nameof(TextBoxTestCaseSource.FillFormPositiveCases))]
+        public void FillForm(TextBoxPageFormData formData)
+        {
+            _textBoxPage.FillForm(formData);
             Assert.Multiple(() =>
             {
                 Assert.That(_textBoxPage.NameP.Displayed);
