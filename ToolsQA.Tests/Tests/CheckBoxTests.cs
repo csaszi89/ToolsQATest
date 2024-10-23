@@ -4,6 +4,7 @@ using ToolsQA.Tests.Pages;
 
 namespace ToolsQA.Tests.Tests
 {
+    [Description("Testing check box elements")]
     public class CheckBoxTests : TestBase
     {
         private CheckBoxPage _checkBoxPage;
