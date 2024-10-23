@@ -7,6 +7,7 @@ using ToolsQA.Tests.TestCaseSources;
 
 namespace ToolsQA.Tests.Tests
 {
+    [Description("Testing text box elements")]
     public class TextBoxTests : TestBase
     {
         private TextBoxPage _textBoxPage;
